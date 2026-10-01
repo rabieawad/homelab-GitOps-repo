@@ -11,3 +11,5 @@ Ubuntu Server, fresh install, hardened before installing Docker.
 5. **Firewall (UFW)** — `sudo ufw allow OpenSSH` before `sudo ufw enable`, to avoid locking out the current SSH session.
 6. **fail2ban** — installed to auto-ban IPs after repeated failed SSH login attempts.
 7. **Tailscale** — installed on the server and on admin devices, for SSH access from outside the home network without opening any port to the public internet.
+8. **Docker & k3s** — installed on the server
+ 
