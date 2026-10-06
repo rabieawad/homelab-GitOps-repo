@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gym-app-deployment
+  namespace: gym-app
+  labels:
+    app: gym-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels: 
+      app: gym-app
+  template:
+    metadata:
+      labels:
+        app: gym-app
+    spec:
+      containers:
+      - name: gym-app
+        image: ghcr.io/rabieawad/gym-app:2
+        ports:
+        - containerPort: 8000
+        env:
+        - name: ENVIRONMENT
+          value: "production"
+        - name: DATABASE_URL
+          value: "sqlite:////data/gym.db"
+        - name: SECRET_KEY
+          value: "change-me-to-a-real-secret-key-in-production"
+        volumeMounts: 
+        - name: data
+          mountPath: /data
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: gym-app-data
