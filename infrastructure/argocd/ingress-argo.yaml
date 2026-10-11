@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: infrastructure-ingress
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/rabieawad/homelab-GitOps-repo
+    path: infrastructure/ingresses
+    targetRevision: main
+  destination:
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
