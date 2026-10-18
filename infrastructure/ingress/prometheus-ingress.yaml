@@ -13,8 +13,8 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: prometheus-server
+            name: prometheus-kube-prometheus-prometheus
             port:
-              number: 80
+              number: 9090
 
 
