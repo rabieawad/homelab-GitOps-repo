@@ -8,7 +8,7 @@ metadata:
 spec:
   replicas: 1
   selector:
-    matchLabels: 
+    matchLabels:
       app: gym-app
   template:
     metadata:
@@ -18,6 +18,7 @@ spec:
       containers:
       - name: gym-app
         image: ghcr.io/rabieawad/gym-app:3
+        imagePullPolicy: Always
         ports:
         - containerPort: 8000
         env:
@@ -27,7 +28,7 @@ spec:
           value: "sqlite:////data/gym.db"
         - name: SECRET_KEY
           value: "change-me-to-a-real-secret-key-in-production"
-        volumeMounts: 
+        volumeMounts:
         - name: data
           mountPath: /data
       imagePullSecrets:
