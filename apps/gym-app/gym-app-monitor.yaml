@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    serviceMonitorSelector: gym-app
+  name: gym-app-monitor
+  namespace: gym-app
+spec:
+  endpoints:
+  - interval: 30s
+    targetPort: 8000
+    path: /metrics
+  namespaceSelector:
+    matchNames:
+    - gym-app
+  selector:
+    matchLabels:
+      app: gym-app
