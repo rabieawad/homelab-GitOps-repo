@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: gym-app
-        image: ghcr.io/rabieawad/gym-app:2
+        image: ghcr.io/rabieawad/gym-app:3
         ports:
         - containerPort: 8000
         env:
