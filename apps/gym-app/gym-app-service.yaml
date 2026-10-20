@@ -3,11 +3,12 @@ kind: Service
 metadata:
   name: gym-app-service
   namespace: gym-app
+  labels:
+    app: gym-app
 spec:
   selector:
     app: gym-app
   ports:
-    - port: 80
-      targetPort: 8000
-      protocol: TCP
+  - port: 80
+    targetPort: 8000
   type: ClusterIP
